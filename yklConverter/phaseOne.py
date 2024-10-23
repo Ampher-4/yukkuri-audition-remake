@@ -94,10 +94,10 @@ class ConverterResolve:
         filtered_string = filtered_string.replace(" ", "")
         return filtered_string
 
-    def resolve(self, html_page:str):
+    def resolve(self, html_page:str) -> str:
         element_text = self.__html_resolve(html_content=html_page)
         result_readable = self.__result_text_filter(element_text)
-        return result_readable
+        return str(result_readable)
 
     def snworks(self, content:bytes)-> str:
         '''this method is debug only, don't ever use it in actual product environment'''
@@ -114,7 +114,3 @@ class ConverterResolve:
 
             
             
-class ConvertPhaseTwo:
-    '''from plain string to audio file'''
-
-    #class 
