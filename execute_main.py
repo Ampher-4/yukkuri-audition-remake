@@ -1,24 +1,21 @@
-import Converter as testsubject
+import yklConverter.phaseOne as phaseoneClient
+import yklConverter.phaseTwo as phasetwoClient
 import urllib.parse
 
-convertclient = testsubject.ConverterClient()
-resolveclient = testsubject.ConverterResolve()
-def test(input:str):
+convertclient = phaseoneClient.ConverterClient()
+resolveclient = phaseoneClient.ConverterResolve()
+
+def phaseonetest(input:str) -> str:
     response_result = convertclient.post_request(input)
     #now got a response object
 
-    '''
+    output_result = resolveclient.resolve(response_result)
 
-    with open("./test.html", 'w', encoding='utf-8') as cacher:
-        cacher.write(response_result)
-'''
-    output_result = resolveclient.snworks(response_result)
-
-    print(output_result)
-    urllib.parse.unquote(output_result)
+    return str(output_result)
 
 #this is true result: 
 # ジアーン シュウ ゥルゥ ドーァ(ディー) ジョーン ウエン ジュワン ホワン チュヨン ウエイ ゥリー ユイ シー ファー イン ドーァ(ディー) ゴーン ジュイ
     print(output_result)
 
-test("将输入的中文转换成为日语式发音的工具")
+phase2client = phasetwoClient.yklRunner()
+result = phase2client.getAudio("シーイーシアジョーァゴーァドーンシイ")
